@@ -1,6 +1,7 @@
 package ua.pasha.VKHandShake;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
@@ -24,12 +25,12 @@ public class VkApiImpl {
 		User user = new User();
 		while (true) {
 			int id = rand.nextInt(50000000);
-			String method = "users.get";
-			String parameter = "user_ids=" + id;
+			String method = "users.get";  
+			String parametr = "user_ids=" + id;
 			log.log(Level.INFO, "random id set to - " + id);
 
-			InputStreamReader in = request(method, parameter);
-
+			InputStreamReader in = request(method, parametr);
+			
 			JSONParser jsonParser = new JSONParser();
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(in);
 			JSONArray jarr = (JSONArray) jsonObject.get("response");
@@ -45,6 +46,7 @@ public class VkApiImpl {
 			user.setName(name);
 			user.setLastName(lastName);
 			log.log(Level.INFO, "user set: id - " + id + " name - " + name + " last name - " + lastName);
+			in.close();
 			break;
 		}
 
@@ -52,11 +54,21 @@ public class VkApiImpl {
 
 	}
 
-	public ArrayList<Integer> getUserFriends() {
+	public ArrayList<Integer> getUserFriends(int id) throws IOException, ParseException {
 		String method = "friends.get";
-		String parameter = "order=random";
+		String parametr1 = "user_id=" + id;
+		String parametr2 = "order=random";
 
-		return new ArrayList<Integer>();
+		InputStreamReader in = request(method,parametr1,parametr2);
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObject = (JSONObject) jsonParser.parse(in);
+		JSONArray jarr = (JSONArray) jsonObject.get("response");
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for ( Object o : jarr){
+			list.add( (int) (long)  o);
+		}
+		in.close();
+		return list;
 	}
 
 	public InputStreamReader request(String... args) throws IOException {

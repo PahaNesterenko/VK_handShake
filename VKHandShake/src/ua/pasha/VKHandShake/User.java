@@ -6,7 +6,7 @@ public class User {
 	private String name = null;
 	private String lastName = null;
 	
-	public User(){
+	public User(){ 
 		
 	}
 	
