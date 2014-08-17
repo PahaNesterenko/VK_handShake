@@ -9,13 +9,17 @@ public class Test {
 	
 	public static void main(String[] args) throws IOException, ParseException {
 		
-		VkApiImpl vk = new VkApiImpl();
-		User user = vk.getRandUser();
-		System.out.println( user.getId() + user.getName() + user.getLastName());
-		ArrayList<Integer> list = vk.getUserFriends(user.getId());
-		for( Integer i : list){
-			System.out.println(i);
+		
+		Worker work = new Worker();
+		ArrayList<User> twoUsers = work.getTwoUsers();
+		
+		ArrayList<User> list = work.searchTrace(twoUsers);
+		for( User i : list){
+		System.out.println( i);
 		}
+		
+		
+		
 	}
 
 }

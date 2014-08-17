@@ -5,7 +5,16 @@ public class User {
 	private int id = 0;
 	private String name = null;
 	private String lastName = null;
+	private boolean isDeactivated = false;
 	
+	public boolean isDeactivated() {
+		return isDeactivated;
+	}
+
+	public void setDeactivated(boolean isDeactivated) {
+		this.isDeactivated = isDeactivated;
+	}
+
 	public User(){ 
 		
 	}
@@ -32,6 +41,10 @@ public class User {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public String toString(){
+		return "user id - " + id + " name - " + name + " last name - " + lastName;
 	}
 	
 }
