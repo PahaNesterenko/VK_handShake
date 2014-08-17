@@ -42,7 +42,6 @@ public class Worker {
 
 	private void doTrace(int curId, int aimId) throws IOException, ParseException {
 		if (trace.size() >= TRACEDEEPNESS || isFind) {
-			log.log(Level.INFO, "search stopped cause deepness or find ( size - " + trace.size() + " is find - " + isFind +")");
 			return;
 		}
 		trace.add(curId);

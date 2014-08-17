@@ -66,17 +66,15 @@ public class VkApiImpl {
 		JSONObject jsonObject = (JSONObject) jsonParser.parse(in);
 		JSONArray jarr = (JSONArray) jsonObject.get("response");
 		ArrayList<Integer> list = new ArrayList<Integer>();
-		int friendNum = 0;
 		try{
 		for (Object o : jarr) {
 			list.add((int) (long) o);
-			friendNum++;
 		}
 		}catch(NullPointerException e){
 			log.log(Level.INFO, "NPE!!!!");
 		}
 		log.log(Level.INFO, "Friend list from user " + id
-				+ " odtained. There are " + friendNum + " friends");
+				+ " odtained. There are " + list.size() + " friends");
 		in.close();
 		return list;
 	}
