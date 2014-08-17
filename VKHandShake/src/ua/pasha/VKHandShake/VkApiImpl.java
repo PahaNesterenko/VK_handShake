@@ -59,9 +59,9 @@ public class VkApiImpl {
 		
 		String method = "friends.get";
 		String parametr1 = "user_id=" + id;
-		String parametr2 = "order=random";
+		//String parametr2 = "order=random";
 
-		InputStreamReader in = request(method, parametr1, parametr2);
+		InputStreamReader in = request(method, parametr1);
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) jsonParser.parse(in);
 		JSONArray jarr = (JSONArray) jsonObject.get("response");
