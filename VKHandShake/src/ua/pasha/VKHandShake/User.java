@@ -6,7 +6,7 @@ public class User {
 	private String name = null;
 	private String lastName = null;
 	private boolean isDeactivated = false;
-	
+	 
 	public boolean isDeactivated() {
 		return isDeactivated;
 	}

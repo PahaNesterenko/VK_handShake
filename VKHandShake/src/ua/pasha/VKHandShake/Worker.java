@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import org.json.simple.parser.ParseException;
 
-public class Worker {
+public class Worker { 
 
 	private static Logger log = Logger.getLogger(VkApiImpl.class.getName());
 

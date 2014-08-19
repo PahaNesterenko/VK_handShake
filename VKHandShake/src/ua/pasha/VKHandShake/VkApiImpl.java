@@ -72,7 +72,7 @@ public class VkApiImpl {
 		}
 		}catch(NullPointerException e){
 			log.log(Level.INFO, "NPE!!!!");
-		}
+		} 
 		log.log(Level.INFO, "Friend list from user " + id
 				+ " odtained. There are " + list.size() + " friends");
 		in.close();
