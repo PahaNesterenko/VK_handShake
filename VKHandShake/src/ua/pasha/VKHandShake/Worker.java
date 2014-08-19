@@ -12,7 +12,7 @@ public class Worker {
 	private static Logger log = Logger.getLogger(VkApiImpl.class.getName());
 
 	private final int TRACEDEEPNESS = 6;
-	public static VkApiImpl vk = new VkApiImpl();
+	public static VkApiImpl vk = new VkApiImpl(); 
 	ArrayList<Integer> trace = new ArrayList<Integer>();
 	boolean isFind = false;
 
