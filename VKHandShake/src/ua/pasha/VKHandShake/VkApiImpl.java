@@ -93,7 +93,7 @@ public class VkApiImpl {
 				in = new InputStreamReader(conn.getInputStream(), "UTF-8");
 			}catch(IOException e){
 				
-			}
+			} 
 		}while(in == null);
 		
 		return in;

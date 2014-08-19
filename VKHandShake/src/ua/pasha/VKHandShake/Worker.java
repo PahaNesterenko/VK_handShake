@@ -24,7 +24,7 @@ public class Worker {
 		log.log(Level.INFO, "second user set");
 		return list;
 	}
-
+ 
 	public ArrayList<User> searchTrace(ArrayList<User> list) throws IOException, ParseException {
 		int initId = list.get(0).getId();
 		int aimId = list.get(1).getId();

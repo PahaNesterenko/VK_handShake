@@ -19,7 +19,7 @@ public class Test {
 		twoUsers.add(u1); 
 		twoUsers.add(u2);
 		
-		
+		 
 		ArrayList<User> list = work.searchTrace(twoUsers);
 		for( User i : list){
 		System.out.println( i);

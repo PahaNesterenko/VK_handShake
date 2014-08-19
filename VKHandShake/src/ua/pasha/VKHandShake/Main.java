@@ -17,7 +17,7 @@ public class Main {
 		
 		for( User i : list){
 		System.out.println( i);
-		}
+		} 
 		
 	}
 
