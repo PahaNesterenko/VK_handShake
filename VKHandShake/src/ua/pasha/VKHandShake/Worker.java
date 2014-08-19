@@ -25,15 +25,16 @@ public class Worker {
 		return list;
 	}
 
-	public ArrayList<User> searchTrace(ArrayList<User> list) throws IOException, ParseException {
+	public ArrayList<User> searchTrace(ArrayList<User> list)
+			throws IOException, ParseException {
 		int initId = list.get(0).getId();
 		int aimId = list.get(1).getId();
 		log.log(Level.INFO, "serch started");
 		doTrace(initId, aimId);
 		log.log(Level.INFO, "serch finished");
-		
+
 		ArrayList<User> result = new ArrayList<User>();
-		for( int traceElem : trace){
+		for (int traceElem : trace) {
 			result.add(vk.getUser(traceElem));
 		}
 		return result;
@@ -41,26 +42,26 @@ public class Worker {
 	}
 
 	private void doTrace(int curId, int aimId) throws IOException, ParseException {
-		if (trace.size() >= TRACEDEEPNESS || isFind) {
-			return;
-		}
 		trace.add(curId);
 
-		for (int i : vk.getFriendList(curId)) {
-			if (i == aimId) {
-				isFind = true;
-				log.log(Level.INFO, "trace finded");
-			}
-			if( isFind){
-				log.log(Level.INFO, "search stopped cause of find");
-				return;
-			}
-			if( trace.size() <= TRACEDEEPNESS){
+		ArrayList<Integer> friendList = vk.getFriendList(curId);
+
+		if (friendList.contains(aimId)) {
+			log.log(Level.INFO, "User " + aimId + " finded at " + trace.size()
+					+ " level");
+			isFind = true;
+			return;
+		}
+
+		if (!isFind || (trace.size() <= TRACEDEEPNESS)) {
+			for (int i : friendList) {
 				doTrace(i, aimId);
+				if (isFind) {
+					return;
+				}
 			}
 		}
 		trace.remove(trace.size() - 1);
-
 	}
 
 }

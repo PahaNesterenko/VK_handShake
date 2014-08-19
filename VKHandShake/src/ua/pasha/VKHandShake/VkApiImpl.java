@@ -87,8 +87,15 @@ public class VkApiImpl {
 		}
 		URL url = new URL(urlString);
 		URLConnection conn = url.openConnection();
-		InputStreamReader in = new InputStreamReader(conn.getInputStream(),
-				"UTF-8");
+		InputStreamReader in = null;
+		do{
+			try{
+				in = new InputStreamReader(conn.getInputStream(), "UTF-8");
+			}catch(IOException e){
+				
+			}
+		}while(in != null);
+		
 		return in;
 	}
 
