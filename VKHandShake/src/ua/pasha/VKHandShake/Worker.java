@@ -11,7 +11,7 @@ public class Worker {
 
 	private static Logger log = Logger.getLogger(VkApiImpl.class.getName());
 
-	private final int TRACEDEEPNESS = 10;
+	private final int TRACEDEEPNESS = 6;
 	public static VkApiImpl vk = new VkApiImpl();
 	ArrayList<Integer> trace = new ArrayList<Integer>();
 	boolean isFind = false;
@@ -25,8 +25,7 @@ public class Worker {
 		return list;
 	}
 
-	public ArrayList<User> searchTrace(ArrayList<User> list)
-			throws IOException, ParseException {
+	public ArrayList<User> searchTrace(ArrayList<User> list) throws IOException, ParseException {
 		int initId = list.get(0).getId();
 		int aimId = list.get(1).getId();
 		log.log(Level.INFO, "serch started");
@@ -53,7 +52,7 @@ public class Worker {
 			return;
 		}
 
-		if (!isFind || (trace.size() <= TRACEDEEPNESS)) {
+		if (!isFind && (trace.size() <= TRACEDEEPNESS)) {
 			for (int i : friendList) {
 				doTrace(i, aimId);
 				if (isFind) {

@@ -94,7 +94,7 @@ public class VkApiImpl {
 			}catch(IOException e){
 				
 			}
-		}while(in != null);
+		}while(in == null);
 		
 		return in;
 	}

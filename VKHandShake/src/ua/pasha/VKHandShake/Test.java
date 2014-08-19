@@ -16,7 +16,7 @@ public class Test {
 		User u2 = new User();
 		u1.setId(220142247);
 		u2.setId(248897092); 
-		twoUsers.add(u1);
+		twoUsers.add(u1); 
 		twoUsers.add(u2);
 		
 		
